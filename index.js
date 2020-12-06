@@ -8,7 +8,10 @@ const io = require("socket.io")(http, {
 })
 
 io.on("connection", socket => {
-    console.log("a user connected")
+    // console.log("a user connected")
+    socket.on("chat message", message => {
+        io.emit("chat message", message)
+    })
 })
 
 // app.get("/", (request, response) => {
